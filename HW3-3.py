@@ -1,9 +1,16 @@
-# (a)
+sample = [0.13, 2.91, 1.2, 1.2] # sample for part(a)
+
+s1 = [1, 3, 5, 6]
+s2 = [2, 3, 4, 6]
+samples = [s1, s2] # a collection of list of samples for part(c)
+
+
+
+
+
+# Part(a) Part(a) Part(a) Part(a) Part(a)
 import matplotlib.pyplot as plt
 import random
-
-# sample = [0.13, 2.91, 1.2, 1.2]
-sample = [1, 2, 2, 3]
 
 def plot_eCDF(sample):
     sorted_sample = sorted(sample)
@@ -57,9 +64,13 @@ def process_for_step_ladder_shape(X, Y): # process X and Y so that the eCDF grap
     new_Y = new_Y + [1]
     return new_X, new_Y
 
-# plot_eCDF(sample)
+plot_eCDF(sample) # Comment this line if you do not want part(a) to be executed
 
-# (b)
+
+
+
+
+# Part(b) Part(b) Part(b) Part(b) Part(b)
 def generate_random_samples(size):
     res = []
     for i in range(size):
@@ -67,15 +78,20 @@ def generate_random_samples(size):
         res.append(n)
     return res
 
-# sample_10 = generate_random_samples(10)
-# sample_100 = generate_random_samples(100)
-# sample_1000 = generate_random_samples(1000)
+sample_10 = generate_random_samples(10)
+sample_100 = generate_random_samples(100)
+sample_1000 = generate_random_samples(1000)
 
-# plot_eCDF(sample_10)
-# plot_eCDF(sample_100)
-# plot_eCDF(sample_1000)
+plot_eCDF(sample_10) # Comment this line if you do not want part(b) to be executed
+plot_eCDF(sample_100) # Comment this line if you do not want part(b) to be executed
+plot_eCDF(sample_1000) # Comment this line if you do not want part(b) to be executed
 
-# (c)
+
+
+
+
+
+# Part(c) Part(c) Part(c) Part(c) Part(c)
 def plot_average_eCDF(samples):
     X = []
     Y = []
@@ -102,41 +118,42 @@ def plot_average_eCDF(samples):
         Y.append(average_eCDF)
 
     X, Y = process_for_step_ladder_shape(X, Y)
-    print(X)
-    print(Y)
+    # print(X)
+    # print(Y)
 
     plt.figure('Average eCDF')
     plt.plot(X, Y, label='Average eCDF')
     plt.scatter(input_points, [0] * len(input_points), color='red', marker='x', s=50, label='samples')
     plt.xlabel('x')
     plt.ylabel('Pr[X<=x]')
-    plt.title('Average eCDF with %d samples.' % len(input_points))
+    plt.title("Average eCDF with "+str(len(input_points))+" samples in total from "+str(len(samples))+" students.")
     plt.legend(loc="upper left")
     plt.grid()
     plt.show()
 
-# s1 = [1, 3, 5, 6] # -> 1/4, 1/2, 3/4, 1
-# s2 = [2, 3, 4, 6] # -> 1/4, 1/2, 3/4, 1
-# samples = [s1, s2]
-# plot_average_eCDF(samples)
+plot_average_eCDF(samples) # Comment this line if you do not want part(c) to be executed
 
-# s1 = [1] #
-# s2 = [2] #
-# samples = [s1, s2]
-# plot_average_eCDF(samples)
 
-# (d)
+
+
+
+# Part(d) Part(d) Part(d) Part(d) Part(d)
 def generate_10_samples_for_n_students(n):
     res = []
     for i in range(n):
         res.append(generate_random_samples(10))
     return res
 
-# plot_average_eCDF(generate_10_samples_for_n_students(10))
-# plot_average_eCDF(generate_10_samples_for_n_students(100))
-# plot_average_eCDF(generate_10_samples_for_n_students(1000))
+plot_average_eCDF(generate_10_samples_for_n_students(10)) # Comment this line if you do not want part(d) to be executed
+plot_average_eCDF(generate_10_samples_for_n_students(100)) # Comment this line if you do not want part(d) to be executed
+plot_average_eCDF(generate_10_samples_for_n_students(1000)) # Comment this line if you do not want part(d) to be executed
 
-# (e)
+
+
+
+
+
+# Part(e) Part(e) Part(e) Part(e) Part(e)
 import math
 import numpy as np
 
@@ -193,6 +210,6 @@ def plot_eCDF_with_confidence_intervals(sample):
 collisions = np.genfromtxt('collisions.csv', delimiter=',').tolist()
 collisions[0] = 393
 
-plot_eCDF_with_confidence_intervals(collisions)
+plot_eCDF_with_confidence_intervals(collisions) # Comment this line if you do not want part(e) to be executed
 
 
